@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
     process.env.DB_PASSWORD,
     {
         host: process.env.DB_HOST,
-        dialect: 'mysql',
+        dialect: process.env.DIALECT,
         // Production improvement: pool helps manage multiple connections
         pool: {
             max: 5,
