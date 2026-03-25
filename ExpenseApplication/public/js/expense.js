@@ -199,6 +199,7 @@ function filterExpenses(type) {
 
 /* ================= DOWNLOAD ================= */
 async function downloadExpenses() {
+    
     try {
         const decoded = parseJwt(token);
 

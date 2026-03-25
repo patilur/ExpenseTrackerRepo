@@ -6,7 +6,8 @@ const uploadToS3 = (data, filename) => {
     const BUCKET_NAME = process.env.BUCKET_NAME;
     const IAM_USER_KEY = process.env.IAM_USER_KEY;
     const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
-
+    console.log("Bucket Name:", BUCKET_NAME); // ✅ check env
+    console.log("IAM Key:", IAM_USER_KEY ? "Loaded" : "Missing");
     let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,

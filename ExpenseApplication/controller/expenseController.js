@@ -239,6 +239,9 @@ const downloadExpense = async (req, res) => {
     console.log("function called============= Hello");
 
     try {
+        console.log("User:", req.user); // ✅ check user
+        console.log("Is Premium:", req.user.isPremiumUser);
+
         if (!req.user.isPremiumUser) {
             return res.status(403).json({
                 message: "Only premium users can download"
@@ -259,9 +262,10 @@ const downloadExpense = async (req, res) => {
 
         // Filename
         const filename = `Expenses-${userId}-${Date.now()}.csv`;
-
+        console.log("Uploading file to S3..."); // ✅
         //Upload to S3
         const fileURL = await S3Service.uploadToS3(content, filename);
+        console.log("File URL generated:", fileURL); // ✅ MOST IMPORTANT
         //console.log("Saving file for user:", userId);
         //console.log("File URL:", fileURL);
         //save to DB
